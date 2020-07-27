@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MefPlugin.Plugin\MefPlugin.Plugin.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)MefPlugin.Application\Plugins\&quot; /Y /Q&#xD;&#xA;xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)MefPlugin.Application\$(OutDir)Plugins\&quot; /Y /Q" />
+  </Target>
+
+</Project>

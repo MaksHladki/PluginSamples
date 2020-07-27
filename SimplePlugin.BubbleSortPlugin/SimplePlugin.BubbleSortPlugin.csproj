@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimplePlugin.Plugin\SimplePlugin.Plugin.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)SimplePlugin.Application\Plugins\&quot; /Y /Q&#xD;&#xA;xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)SimplePlugin.Application\$(OutDir)Plugins\&quot; /Y /Q" />
+  </Target>
+
+</Project>
