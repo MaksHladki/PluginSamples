@@ -2,7 +2,7 @@
 {
     public interface IPluginMetadata
     {
-        public string Name { get; }
-        public int Priority { get; }
+        string Name { get; }
+        int Priority { get; }
     }
 }

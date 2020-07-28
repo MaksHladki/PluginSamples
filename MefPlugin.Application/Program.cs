@@ -11,7 +11,7 @@ namespace MefPlugin.Application
     {
         private static readonly int[] Data = { 2, 7, 0, 11, -4, 3, 7 };
 
-        static void Main()
+        private static void Main()
         {
             var pluginLoader = new PluginLoader(AppDomain.CurrentDomain.BaseDirectory);
             pluginLoader.ExportsChanged += PluginLoaderOnExportsChanged;

@@ -11,9 +11,9 @@ namespace DiPlugin.Application
     {
         private static readonly int[] Data = { 2, 7, 0, 11, -4, 3, 7 };
 
-        static void Main()
+        private static void Main()
         {
-            var serviceCollection = new ServiceCollection()
+            IServiceCollection serviceCollection = new ServiceCollection()
                 .AddLogging(configure => configure.AddConsole())
                 .AddPlugins(AppDomain.CurrentDomain.BaseDirectory);
 
@@ -33,7 +33,7 @@ namespace DiPlugin.Application
 
             foreach ((string assemblyName, IPlugin plugin) in pluginDictionary)
             {
-                var sortService = sortServiceDictionary[assemblyName];
+                ISortService sortService = sortServiceDictionary[assemblyName];
                 var sortedArray = sortService.Sort((int[])Data.Clone());
 
                 Console.WriteLine($"Name: {plugin.Name}");
